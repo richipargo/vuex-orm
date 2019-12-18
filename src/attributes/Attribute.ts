@@ -15,6 +15,11 @@ export default abstract class Attribute {
   }
 
   /**
+   * The field is serializable
+   */
+  isSerializable: boolean = true
+
+  /**
    * Convert given value to the appropriate value for the attribute.
    */
   abstract make (value: any, parent: Record, key: string): any

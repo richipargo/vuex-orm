@@ -8,7 +8,8 @@ describe('Unit – Model - Serialization', () => {
       static fields () {
         return {
           id: this.attr(null),
-          name: this.attr('')
+          name: this.attr(''),
+          ignore: this.attr('data').serialize(false)
         }
       }
     }
@@ -19,6 +20,7 @@ describe('Unit – Model - Serialization', () => {
 
     expect(json).not.toBeInstanceOf(User)
     expect(json).toEqual({ $id: null, id: 1, name: 'John Doe' })
+    expect(json.ignore).not.toEqual('data')
   })
 
   it('can serialize nested fields into json', () => {

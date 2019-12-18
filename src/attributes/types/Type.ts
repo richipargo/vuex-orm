@@ -14,6 +14,11 @@ export default abstract class Type extends Attribute {
   isNullable: boolean = false
 
   /**
+   * Whether if the attribute is serializable vie `$toJson` method.
+   */
+  isSerializable: boolean = true
+
+  /**
    * The mutator for the field.
    */
   mutator?: Mutator<any>
@@ -26,6 +31,15 @@ export default abstract class Type extends Attribute {
 
     this.value = value
     this.mutator = mutator
+  }
+
+  /**
+   * Set `isSerializable` to `value`.
+   */
+  serialize (value: boolean = true): this {
+    this.isSerializable = value
+
+    return this
   }
 
   /**
